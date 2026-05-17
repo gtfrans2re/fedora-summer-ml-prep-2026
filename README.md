@@ -1,28 +1,43 @@
 # fedora-summer-ml-prep-2026
-Pre-internship preparation repository for my 2026 Fedora ML/AI internship
 
-## Exploring the RamaLama RAG
+Pre-internship preparation repository for my 2026 Fedora ML/AI internship.
+
+---
+
+## Exploring RamaLama RAG
 
 ### Install RamaLama
 
-- To install RamaLama on your Fedora system, run this in a command-line shell
+To install RamaLama on a Fedora system, run:
 
 ```bash
 sudo dnf install ramalama
 ```
-- To install differently or on another system, please check the official installation guide:
 
-[Install][https://github.com/containers/ramalama?tab=readme-ov-file#install]
+To install RamaLama on another Linux distribution or using alternative methods, check the official installation guide:
 
-### Display RamaLama version
+[Install RamaLama](https://github.com/containers/ramalama?tab=readme-ov-file#install)
+
+---
+
+### Display RamaLama Version
 
 ```bash
 ramalama version
 ```
 
+---
+
 ### About RamaLama RAG
 
-ramalama-rag is a command-line tool based on RamaLama that takes in documents as input and converts them into a RAG database and package as a container image. Basically two containers together, namely the llama.cpp container serves the AI models, while a lightweight RAG container runs the document processing pipeline.
+`ramalama-rag` is a command-line tool built on top of RamaLama that converts documents into a Retrieval-Augmented Generation (RAG) database and packages it as a container image.
+
+The architecture relies on two cooperating containers:
+
+- A `llama.cpp` container responsible for serving AI models.
+- A lightweight RAG container responsible for document ingestion, processing, chunking, embedding generation, and vector database creation.
+
+---
 
 ## Document Processing & Retrieval Pipeline Architecture
 
@@ -55,7 +70,7 @@ ramalama-rag is a command-line tool based on RamaLama that takes in documents as
                  ┌──────────────────────────┐
                  │ Section-Based Chunking   │
                  │--------------------------│
-                 │ Chunk by headings/       │
+                 │ Chunk by headings and    │
                  │ semantic sections        │
                  └────────────┬─────────────┘
                               ▼
@@ -63,7 +78,7 @@ ramalama-rag is a command-line tool based on RamaLama that takes in documents as
                  │ Embedding Generation     │
                  │--------------------------│
                  │ EmbeddingGemma           │
-                 │ served via llama.cpp     │
+                 │ served via llama.cpp    │
                  └────────────┬─────────────┘
                               ▼
                  ┌──────────────────────────┐
@@ -81,21 +96,27 @@ ramalama-rag is a command-line tool based on RamaLama that takes in documents as
                  └──────────────────────────┘
 ```
 
-### Convert a single PDF
+---
+
+### Convert a Single PDF
 
 ```bash
 ramalama rag ./data/2305.14325v1.pdf ./ramalama-rag-output
 ```
 
-### Output after successful conversion
+---
 
+### Output After Successful Conversion
+
+```text
 .
 ├── data
-│   └── 2305.14325v1.pdf
+│   └── 2305.14325v1.pdf
 ├── LICENSE
 ├── ramalama-rag-output
-│   ├── collection
-│   │   └── rag
-│   │       └── storage.sqlite
-│   └── meta.json
+│   ├── collection
+│   │   └── rag
+│   │       └── storage.sqlite
+│   └── meta.json
 └── README.md
+```

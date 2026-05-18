@@ -146,6 +146,24 @@ However, looking closely at the verbose output, we notice that txt type files ar
 
 ![RamaLama Simple TXT Output](screenshots/ramalama_simple_txt_test.png)
 
+### Using a custom GPU or Graphics Accelerators
+
+As my laptop has an Intel Corporation Meteor Lake-P `Intel Arc Graphics`, I tried this for high-performance computing.
+
+By default, RamaLama uses `llama.cpp` to run models on your hardware. By passing --runtime=vllm, you instruct RamaLama to use `vLLM` as the underlying inference engine.Why use it? `vLLM` is designed for `high-performance enterprise workloads`. It uses techniques like PagedAttention to drastically increase generation speed and throughput, making it ideal if you need to serve multiple users simultaneously with low latency.
+
+To do so:
+
+```bash
+ramalama --runtime=vllm rag ./data/ my-rag-image
+```
+
+In my case, it failed and returned 
+
+![RamaLama Runtime vLLM HPC](screenshots/ramalama_vllm_hpc_runtime_1.png)
+
+![RamaLama Runtime vLLM HPC](screenshots/ramalama_vllm_hpc_runtime_2.png)
+
 ### Runnning the Hugging Face GPT-OSSS with RamaLama
 
 To run the model locally, we need to do the following:
@@ -173,6 +191,14 @@ ramalama serve gpt-oss --port 8000
 ---
 
 ## RPM Packaging
+
+### Getting to know the RPM Package Management System
+
+Get to know better the Fedora RPM Package Management System at this URL: [https://packages.fedoraproject.org/pkgs/rpm/rpm/](https://packages.fedoraproject.org/pkgs/rpm/rpm/).
+
+It is worth checking the [rpmlint](https://packages.fedoraproject.org/pkgs/rpmlint/rpmlint/), the Fedora Package Management tool for checking common errors in RPM packages.
+
+### Simulation of the RPM based systems
 
 RPM Packaging allows to package an application for RPM based systems, which then advantageously :
 

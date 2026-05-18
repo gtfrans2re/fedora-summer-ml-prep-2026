@@ -142,7 +142,7 @@ RamaLama-RAG successfully converted the PDF and the HTML files in the data direc
 ![RamaLama Directory Output](screenshots/ramalama_dir_ragging.png)
 
 The hypothesis above was further invalidated by run it a simple 1-line text file and it failed again.
-However, looking closely at the verbose output, we notice that txt type files are not allowed even though it is mentioned on the RamaLama RAG documentation page here `https://github.com/containers/ramalama/blob/main/docs/ramalama-rag.1.md` that it is a supported format.
+However, looking closely at the verbose output, we notice that txt type files are not allowed even though it is mentioned on the RamaLama RAG documentation page here: [https://github.com/containers/ramalama/blob/main/docs/ramalama-rag.1.md](https://github.com/containers/ramalama/blob/main/docs/ramalama-rag.1.md) that it is a supported format.
 
 ![RamaLama Simple TXT Output](screenshots/ramalama_simple_txt_test.png)
 

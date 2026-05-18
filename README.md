@@ -158,11 +158,39 @@ To do so:
 ramalama --runtime=vllm rag ./data/ my-rag-image
 ```
 
-In my case, it failed and returned 
+In my case, it failed and returned `Error: unable to copy from source docker://vllm/vllm-openai:latest: copying system image from manifest list: reading blob sha256:0e0a2c237a999a7fa40dfdf77e0f8d5810bbc041b4012e71593f89081fc10709`.
 
 ![RamaLama Runtime vLLM HPC](screenshots/ramalama_vllm_hpc_runtime_1.png)
 
 ![RamaLama Runtime vLLM HPC](screenshots/ramalama_vllm_hpc_runtime_2.png)
+
+Pre-pulling the image manually fixed it for me:
+
+```bash
+podman pull docker.io/vllm/vllm-openai:latest
+```
+
+![Podman Pull VLLM OpenAI](screenshots/podman_pull_vlllm_openai.png)
+
+Yet, re-running: 
+
+```bash
+ramalama --runtime=vllm rag ./data/ my-rag-image
+```
+
+returned a `RuntimeError: Failed to infer device type`.
+
+![UnSuccessful RamaLama VLLM HPC Runtime after Podman Pull](screenshots/ramalama_vllm_hpc_runtime_failed.png)
+
+To monitor the Intel GPU usage on your system:
+
+```bash
+sudo intel_gpu_top
+```
+
+![Intel GPU Top](screenshots/intel_gpu_top.png)
+
+---
 
 ### Runnning the Hugging Face GPT-OSSS with RamaLama
 

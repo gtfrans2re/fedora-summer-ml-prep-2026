@@ -117,14 +117,37 @@ ramalama rag ./data/2305.14325v1.pdf ./ramalama-rag-output
 ```text
 .
 ├── data
-│   └── 2305.14325v1.pdf
+│   ├── 2305.14325v1.pdf
+│   ├── ramalama_docs_ramalama-rag.1.md at main · containers_ramalama.html
+│   ├── schedule.txt
+│   └── simple.txt
 ├── LICENSE
 ├── ramalama-rag-output
-│   ├── collection
-│   │   └── rag
-│   │       └── storage.sqlite
-│   └── meta.json
-└── README.md
+│   ├── collection
+│   │   └── rag
+│   │       └── storage.sqlite
+│   └── meta.json
+├── README.md
+└── screenshots
+    ├── intel_gpu_top.png
+    ├── podman_pull_vlllm_openai.png
+    ├── ramalama_dir_ragging.png
+    ├── ramalama_rag_pdf_output.png
+    ├── ramalama_rag_pfd.png
+    ├── ramalama_run_gpt_oss.png
+    ├── ramalama_serve_gpt_oss_ask.png
+    ├── ramalama_serve_gpt_oss_response.png
+    ├── ramalama_simple_txt_test.png
+    ├── ramalama_version.png
+    ├── ramalama_vllm_hpc_runtime_1.png
+    ├── ramalama_vllm_hpc_runtime_2.png
+    ├── ramalama_vllm_hpc_runtime_failed.png
+    ├── rpmbuild_specs.png
+    ├── rpmdev_setups_specs.png
+    ├── rpmdevtools_install.png
+    └── rpm_verify_run_app.png
+
+6 directories, 25 files
 ```
 
 ### Convert a directory file content
@@ -292,7 +315,7 @@ The GNU Hello program produces a familiar, friendly greeting.
 %{_mandir}/man1/hello.1*
 
 %changelog
-* Mon May 18 2026 gtfrans2re <francoisgonothitoure@gmail.com> - 2.10-1
+* Mon May 18 2026 gtfrans2re <your-email-id> - 2.10-1
 - Initial package build for GNU Hello
 ```
 
@@ -313,3 +336,4 @@ hello
 ```
 
 ![RPM App verify and run](screenshots/rpm_verify_run_app.png)
+

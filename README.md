@@ -106,7 +106,8 @@ The architecture relies on two cooperating containers:
 ramalama rag ./data/2305.14325v1.pdf ./ramalama-rag-output
 ```
 
-![RamaLama PDF Conversion](screenshots/ramalama_rag_pdf.png)
+![RamaLama PDF Conversion](screenshots/ramalama_rag_pfd.png)
+
 ![RamaLama Version Output](screenshots/ramalama_rag_pdf_output.png)
 
 ---

@@ -170,3 +170,92 @@ ramalama serve gpt-oss --port 8000
 
 ![RamaLama Serve GUI Model Answering](screenshots/ramalama_serve_gpt_oss_response.png)
 
+---
+
+## RPM Packaging
+
+RPM Packaging allows to package an application for RPM based systems, which then advantageously :
+
+- it puts together code, data, config files and post-installations scripts.
+- the package can be signed, therefore clients can verify that the package was not altered.
+- it standardize installation paths.
+- it describes requirements, which are automatically resolved by system.
+- it allows easy installation/upgrade/removal of your application. 
+
+Source: [https://developer.fedoraproject.org/deployment/rpm/about.html](https://developer.fedoraproject.org/deployment/rpm/about.html)
+
+Example Setup Instructions:
+
+```bash
+sudo dnf install fedora-packager rpmdevtools gcc
+```
+
+![RMP DevTools Installations](screenshots/rpmdevtools_install.png)
+
+```bash
+rpmdev-setuptree
+cd ~/rpmbuild/SOURCES
+wget http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz
+cd ~/rpmbuild/SPECS
+rpmdev-newspec --macros hello.spec
+```
+
+![RPM Dev Setups and Specs](screenshots/rpmdev_setups_specs.png)
+
+Sample content of the `hello.spec` file:
+
+```text
+Name:           hello
+Version:        2.10
+Release:        1%{?dist}
+Summary:        The GNU Hello program
+
+License:        GPLv3+
+URL:            http://ftp.gnu.org/gnu/hello
+Source0:        http://ftp.gnu.org/gnu/hello/%{name}-%{version}.tar.gz
+
+BuildRequires:  gcc, make       
+
+%description
+The GNU Hello program produces a familiar, friendly greeting.
+
+%prep
+%autosetup
+
+%build
+%configure
+%make_build
+
+%install
+%make_install
+%find_lang %{name}
+
+%files -f %{name}.lang
+%license COPYING
+%doc README AUTHORS ChangeLog NEWS
+%{_bindir}/hello
+%{_infodir}/hello.info*
+%{_mandir}/man1/hello.1*
+
+%changelog
+* Mon May 18 2026 gtfrans2re <francoisgonothitoure@gmail.com> - 2.10-1
+- Initial package build for GNU Hello
+```
+
+To run the `hello.spec` file:
+
+```bash
+rpmbuild -ba hello.spec
+```
+
+![RPM Build Specs](screenshots/rpmbuild_specs.png)
+
+To verify and run the RPM Packaged application:
+
+```bash
+ls -l ~/rpmbuild/RPMS/x86_64/
+sudo dnf install ~/rpmbuild/RPMS/x86_64/hello-2.10-1.fc44.x86_64.rpm
+hello
+```
+
+![RPM App verify and run](screenshots/rpm_verify_run_app.png)

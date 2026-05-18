@@ -2,6 +2,25 @@
 
 Pre-internship preparation repository for my 2026 Fedora ML/AI internship.
 
+# Table of Contents
+
+- [Exploring RamaLama RAG](#exploring-ramalama-rag)
+  - [Install RamaLama](#install-ramalama)
+  - [Display RamaLama Version](#display-ramalama-version)
+  - [About RamaLama RAG](#about-ramalama-rag)
+
+- [Document Processing & Retrieval Pipeline Architecture](#document-processing--retrieval-pipeline-architecture)
+  - [Pipeline Overview](#pipeline-overview)
+  - [Convert a Single PDF](#convert-a-single-pdf)
+  - [Output After Successful Conversion](#output-after-successful-conversion)
+  - [Convert a Directory File Content](#convert-a-directory-file-content)
+  - [Using a Custom GPU or Graphics Accelerators](#using-a-custom-gpu-or-graphics-accelerators)
+  - [Running the Hugging Face GPT-OSS with RamaLama](#running-the-hugging-face-gpt-oss-with-ramalama)
+
+- [RPM Packaging](#rpm-packaging)
+  - [Getting to Know the RPM Package Management System](#getting-to-know-the-rpm-package-management-system)
+  - [Simulation of RPM-Based Systems](#simulation-of-rpm-based-systems)
+  
 ---
 
 ## Exploring RamaLama RAG

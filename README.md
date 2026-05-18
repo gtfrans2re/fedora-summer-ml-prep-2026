@@ -145,3 +145,28 @@ The hypothesis above was further invalidated by run it a simple 1-line text file
 However, looking closely at the verbose output, we notice that txt type files are not allowed even though it is mentioned on the RamaLama RAG documentation page here `https://github.com/containers/ramalama/blob/main/docs/ramalama-rag.1.md` that it is a supported format.
 
 ![RamaLama Simple TXT Output](screenshots/ramalama_simple_txt_test.png)
+
+### Runnning the Hugging Face GPT-OSSS with RamaLama
+
+To run the model locally, we need to do the following:
+
+```bash
+ramalama run gpt-oss
+```
+
+![RamaLama RUN HF:GPT-OSS](screenshots/ramalama_run_gpt_oss.png)
+
+You can also supply a full model URL if you prefer to reference a specific location directly (for example, `hf://unsloth/gpt-oss-20b-GGUF`).
+
+More about this on: [https://www.redhat.com/en/blog/run-containerized-ai-models-locally-ramalama](https://www.redhat.com/en/blog/run-containerized-ai-models-locally-ramalama)
+
+Moreover, `ramalama serve` makes it possible to expose a local model through a REST endpoint, an interactive GUI that allows you to type in a prompt and get the model's answer to the prompt after reasoning with:
+
+```bash
+ramalama serve gpt-oss --port 8000
+```
+
+![RamaLama Serve GUI Prompting](screenshots/ramalama_serve_gpt_oss_ask.png)
+
+![RamaLama Serve GUI Model Answering](screenshots/ramalama_serve_gpt_oss_response.png)
+

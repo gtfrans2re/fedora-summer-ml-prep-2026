@@ -1,0 +1,48 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//AI Assistant//Blogging Schedule Montreal//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+SUMMARY:Blog prompt: "Introduce yourself"
+DTSTART;VALUE=DATE:20260518
+DTEND;VALUE=DATE:20260519
+DESCRIPTION:Outreachy blogging schedule event.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Blog prompt: "Everybody struggles"
+DTSTART;VALUE=DATE:20260601
+DTEND;VALUE=DATE:20260602
+DESCRIPTION:Outreachy blogging schedule event.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Blog prompt: "Think about your audience"
+DTSTART;VALUE=DATE:20260615
+DTEND;VALUE=DATE:20260616
+DESCRIPTION:Outreachy blogging schedule event.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Mid-point project progress blog post
+DTSTART;VALUE=DATE:20260629
+DTEND;VALUE=DATE:20260630
+DESCRIPTION:Outreachy blogging schedule event.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Blog prompt: "Career opportunities"
+DTSTART;VALUE=DATE:20260713
+DTEND;VALUE=DATE:20260714
+DESCRIPTION:Outreachy blogging schedule event.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:No blog post - interns work on their resume
+DTSTART;VALUE=DATE:20260727
+DTEND;VALUE=DATE:20260728
+DESCRIPTION:Outreachy blogging schedule event.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Final project progress blog post
+DTSTART;VALUE=DATE:20260810
+DTEND;VALUE=DATE:20260811
+DESCRIPTION:Outreachy blogging schedule event.
+END:VEVENT
+END:VCALENDAR

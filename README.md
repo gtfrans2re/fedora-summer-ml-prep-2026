@@ -126,3 +126,22 @@ ramalama rag ./data/2305.14325v1.pdf ./ramalama-rag-output
 │   └── meta.json
 └── README.md
 ```
+
+### Convert a directory file content
+
+As RamaLama RAG converts pdf, txt, and html files into a RAG image, we can simply run it on a directory and it will process its content and save the output.
+
+```bash
+ramalama rag ./data myrag:latest
+```
+
+* note that the data directory contains three files of PDF, TXT, and HTML format.
+
+RamaLama-RAG successfully converted the PDF and the HTML files in the data directory, but got stuck in converting that of the txt file, which currently contains an ics calendar data content but saved as a txt file. It threw an this : `Error: File format not allowed: schedule.txt`.
+
+![RamaLama Directory Output](screenshots/ramalama_dir_ragging.png)
+
+The hypothesis above was further invalidated by run it a simple 1-line text file and it failed again.
+However, looking closely at the verbose output, we notice that txt type files are not allowed even though it is mentioned on the RamaLama RAG documentation page here `https://github.com/containers/ramalama/blob/main/docs/ramalama-rag.1.md` that it is a supported format.
+
+![RamaLama Simple TXT Output](screenshots/ramalama_simple_txt_test.png)

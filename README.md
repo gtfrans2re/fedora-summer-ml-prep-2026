@@ -26,6 +26,8 @@ To install RamaLama on another Linux distribution or using alternative methods, 
 ramalama version
 ```
 
+![RamaLama Version Output](screenshots/ramalama_version.png)
+
 ---
 
 ### About RamaLama RAG
@@ -103,6 +105,9 @@ The architecture relies on two cooperating containers:
 ```bash
 ramalama rag ./data/2305.14325v1.pdf ./ramalama-rag-output
 ```
+
+![RamaLama PDF Conversion](screenshots/ramalama_rag_pdf.png)
+![RamaLama Version Output](screenshots/ramalama_rag_pdf_output.png)
 
 ---
 

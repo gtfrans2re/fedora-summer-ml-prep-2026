@@ -20,6 +20,10 @@ Pre-internship preparation repository for my 2026 Fedora ML/AI internship.
 - [RPM Packaging](#rpm-packaging)
   - [Getting to Know the RPM Package Management System](#getting-to-know-the-rpm-package-management-system)
   - [Simulation of RPM-Based Systems](#simulation-of-rpm-based-systems)
+
+- [RamaLama Sandbox-Goosee](#ramalama-sandbox-goose)
+  - [Getting to know the RamaLama Sandbox-Goose](#getting-to-know-the_ramalama_sandbox_goose)
+  - [Example Usage of the the RamaLama Sandbox-Goose](#example-usage-of-the-ramalama-sandbox-goose)
   
 ---
 
@@ -355,4 +359,77 @@ hello
 ```
 
 ![RPM App verify and run](screenshots/rpm_verify_run_app.png)
+
+## RamaLama Sandbox-Goosee
+
+Goose is an open-source, terminal-first AI agent developed by Block that's designed to operate autonomously on your local machine, it goes beyond simple code suggestions by handling complete development workflows—from interpreting requirements and reading files to executing terminal commands, self-correcting errors, and interacting with APIs.
+
+The RamaLama Sandbox is a feature within the RamaLama open-source project that allows you to securely run AI agents (like Goose or OpenCode.ai) in an isolated environment, powered by your locally hosted AI models.
+
+### Getting to know the RamaLama Sandbox-Goose
+
+The RamaLama Sandbox-Goose allows running Goose in a container, connected to a local model server also running in a container. Goose uses the model for reasoning and tool calling.
+
+First, you make sure sandbox is available on your RamaLama version:
+
+```bash
+ramalama sandbox --help
+```
+
+I personally got:
+
+![RamaLama Sandbox Help](screenshots/ramalama_sandbox_help.png)
+
+because I was running `RamaLama version 0.17.1`, yet Sandbox was missing.
+
+Enabling updates-testing and uprading from there was the fix:
+
+```bash
+sudo dnf upgrade --refresh --enablerepo=updates-testing ramalama
+```
+
+and Checking if a newer build is in Koji (Fedora's build system):
+
+```bash
+sudo dnf upgrade --refresh ramalama --releasever=44
+```
+
+Then, re-running:
+
+```bash
+ramalama sandbox --help
+```
+
+returned:
+
+![Ramalama Sandbox Help Success](screenshots/ramalama_sandbox_help_success.png)
+
+### Example Usage of the the RamaLama Sandbox-Goose
+
+I then ran two examples from the [https://ramalama.ai/docs/commands/ramalama/sandbox-goose/](https://ramalama.ai/docs/commands/ramalama/sandbox-goose/)
+
+```bash
+ramalama sandbox goose qwen3:4b
+```
+Output:
+
+![Ramalama Sandbox Goose OpenAI Qwen3](screenshots/ramalama_sandbox_goose_openAI_qwen3.png)
+
+![Ramalama Sandbox Goose OpenAI Qwen3 Continued](screenshots/ramalama_sandbox_goose_openAI_qwen3_cont.png)
+
+Also, I tried requesting the agent to perform actions non-interactively:
+
+First, with the OpenAI's qwen3:4b:
+
+```bash
+ramalama sandbox goose -w . qwen3:4b Please analyze the current directory
+```
+
+it returned a non-zero exit status 137 meaning that the container was killed by the OS with SIGKILL, almost always because it ran out of memory (OOM). The Goose container plus the llama-server container both running simultaneously, with qwen3:4b loaded into RAM, was too much for your system at that moment.
+
+![Ramalama Sandbox Goose_openAI_qwen3_failed_137](screenshots/ramalama_sandbox_goose_openAI_qwen3_failed_137.png)
+
+Using a smaller model, the qwen3:1.7b help cross this line:
+
+![ramalama_sandbox_goose_openAI_qwen3_light](screenshots/ramalama_sandbox_goose_openAI_qwen3_light.png)
 
